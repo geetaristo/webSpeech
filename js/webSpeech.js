@@ -18,6 +18,13 @@ var dialog = [{text:'hello.', speak:false, timeout:3000, templateName:''},
              ];
 
 function typeline(text, charPos, callBack){
+    
+    
+    var scope = angular.element($("#viewport")).scope();
+    scope.$apply(function(){
+        console.log('AI');
+    })
+    
 	if(charPos == text.length){ 
 		// We're done with that line.
         callBack();
