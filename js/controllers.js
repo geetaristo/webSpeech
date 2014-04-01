@@ -19,16 +19,18 @@ angular.module('myApp.controllers', ['myApp.templates']).
         
         
 
-        $scope.advanceform = function () {
+        $scope.advanceform = function (templatename) {
+            
+            if (templatename.length >=1){
+            console.log('AI ' + templatename );
+           
             
              $scope.nextTemplate = function () {
               return $scope.templates["2"];
-          }();
+            }();
+            
+          } 
         }
-        
-        
-        
-    
                                
 
     

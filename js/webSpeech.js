@@ -13,23 +13,24 @@ var dialog = [{text:'hello.', speak:false, timeout:3000, templateName:''},
               {text:'humans have always imagined they could talk to machines',
                     speak:false, timeout:baseWait, templateName:''},
               {text:'and', speak:false, timeout:baseWait, templateName:''},
-              {text:'the machines would understand.', speak:true, timeout:baseWait, templateName:'1'},
-              {text:'', speak:false, timeout:baseWait, templateName:'1'}
+              {text:'the machines would understand.', speak:true, timeout:baseWait, templateName:'2'},
+              {text:'', speak:false, timeout:baseWait, templateName:'2'}
              ];
 
-function typeline(text, charPos, callBack){
-    
-    
-    
+var dialogIdx = 0;
+
+function typeline(chunk, charPos, callBack){
+    var text = chunk.text;
     
 	if(charPos == text.length){ 
 		// We're done with that line.
         callBack();
         
-        
-        var scope = angular.element($("#viewport")).scope();
+    var scope = angular.element($("#templateContent")).scope();
     scope.$apply(function(){
-        console.log('AI');
+        
+         
+         scope.advanceform(chunk.templateName);
         
     })
 		return; 
@@ -40,7 +41,7 @@ function typeline(text, charPos, callBack){
 		else 
 			$('#commandLine').html($('#commandLine').html() + text[charPos]);
         
-		setTimeout(function(){ typeline(text, charPos+1, callBack);}, typeWait );
+		setTimeout(function(){ typeline(chunk, charPos+1, callBack);}, typeWait );
 	}
 }
 
@@ -48,12 +49,12 @@ function speak(text){
     speechSynthesis.speak(new SpeechSynthesisUtterance(text));
 }
 
-var dialogIdx = 0;
+
 // This is the recursive function that drives the presentation.
 function presentDialog(){ 
     
     if(dialogIdx < dialog.length){
-        typeline(dialog[dialogIdx].text, 0,  
+        typeline(dialog[dialogIdx], 0,  
                     function(){setTimeout(function(){
                         dialogIdx++; presentDialog();
                     }, dialog[dialogIdx].timeout);}
