@@ -5,16 +5,30 @@
 angular.module('myApp.controllers', ['myApp.templates']).
   controller('mainFormController', ['$scope','templateProvider', 
     function($scope,templateProvider) {
-        $scope.current = 0;
-        $scope.max = 4;  
-
+       
+         $scope.templates=  {
+                    "1":"templates/welcome.html",
+                    "2":"templates/001scifi.html",
+                    "3":"templates/002scifi.html"
+            }
+        
+        
         $scope.nextTemplate = function () {
-              return templateProvider(1);
+            return $scope.templates["1"];
           }();
+        
 
-        $scope.advanceform = function () {
-
+        $scope.advanceform = function (templatename) {
+            
+            if (templatename.length >=1){
+            
+             $scope.nextTemplate = function () {
+              return $scope.templates[templatename];
+            }();
+            
+          } 
         }
+                               
 
     
   }])

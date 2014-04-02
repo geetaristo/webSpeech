@@ -10,13 +10,15 @@
 	
 </head>
 
-<body onkeyup="keyedUp(event)">
+<body onkeyup="keyedUp(event)" ng-controller="mainFormController">
 
 	<div id="dialogContent">
 	    <div id="textOut">><span id="commandLine"></span><span class="blink">_</span></div>
     </div>
 
-    <div id="templateContent" ng-view> </div>
+    <div id="templateContent" ng-include="'view-port.html'"></div>
+    
+<!--    <div id="viewport"  ></div>-->
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-route.js"></script>

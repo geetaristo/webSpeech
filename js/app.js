@@ -13,6 +13,6 @@ angular.module('myApp', [
   'myApp.controllers'   
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'view-port.html', controller: 'mainFormController'});
+  $routeProvider.when('/view1', {templateUrl: 'view-port.html'});
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
