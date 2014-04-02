@@ -12,9 +12,9 @@ var dialog = [{text:'hello.', speak:false, timeout:3000, templateName:''},
               {text:'since the dawn of science fiction', speak:false, timeout:baseWait, templateName:''},
               {text:'humans have always imagined they could talk to machines',
                     speak:false, timeout:baseWait, templateName:''},
-              {text:'and', speak:false, timeout:baseWait, templateName:''},
-              {text:'the machines would understand.', speak:true, timeout:baseWait, templateName:'2'},
-              {text:'', speak:false, timeout:baseWait, templateName:'2'}
+              {text:'and', speak:false, timeout:baseWait, templateName:'2'},
+              {text:'the machines would understand.', speak:true, timeout:baseWait, templateName:'3'},
+              {text:'', speak:false, timeout:baseWait, templateName:''}
              ];
 
 var dialogIdx = 0;

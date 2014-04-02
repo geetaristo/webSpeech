@@ -8,7 +8,8 @@ angular.module('myApp.controllers', ['myApp.templates']).
        
          $scope.templates=  {
                     "1":"templates/welcome.html",
-                    "2":"templates/001scifi.html"
+                    "2":"templates/001scifi.html",
+                    "3":"templates/002scifi.html"
             }
         
         
@@ -16,17 +17,13 @@ angular.module('myApp.controllers', ['myApp.templates']).
             return $scope.templates["1"];
           }();
         
-        
-        
 
         $scope.advanceform = function (templatename) {
             
             if (templatename.length >=1){
-            console.log('AI ' + templatename );
-           
             
              $scope.nextTemplate = function () {
-              return $scope.templates["2"];
+              return $scope.templates[templatename];
             }();
             
           } 
