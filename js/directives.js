@@ -1,7 +1,7 @@
 'use strict';
 
 /* Directives */
-angular.module('myApp.directives', [])
+angular.module('myApp.directives', ['ngAnimate'])
 .directive('appVersion', ['version',
     function (version) {
         return function (scope, elm, attrs) {
@@ -25,44 +25,46 @@ angular.module('myApp.directives', [])
         link: linker
 
     };
-}).directive('previousQuestion', function ($compile) {
+}).directive('slider', function($timeout) {
+  return {
+    restrict: 'AE',
+	replace: true,
+    link: function (scope, elem, attrs) {
+	
+		scope.currentIndex=0;
 
-    var linker = function ($scope, element, attrs) {
-        var previousTemplate;
-
-        $scope.$watch(attrs.previousQuestion, function (value) {
-            previousTemplate = value;
-            var re = /input/g;
-            var modified = value.replace(re,"input ng-disabled='true'").replace("autofocus=", "noFocus=");
-            element.html(modified).show();
-            $compile(element.contents())($scope);
-        });
-    }
-
-    return {
-        restrict: "EA",
-        rep1ace: true,
-        link: linker
-
-    };
-}).directive('nextQuestion', function ($compile) {
-
-    var linker = function ($scope, element, attrs) {
-        var nextTemplate;
-        
-        $scope.$watch(attrs.nextQuestion, function (value) {
-            nextTemplate = value;
-            var re = /input/g;
-            var modified = value.replace(re,"input ng-disabled='true'").replace("autofocus=", "noFocus=");
-            element.html(modified).show();
-            $compile(element.contents())($scope);
-        });
-    }
-
-    return {
-        restrict: "EA",
-        rep1ace: true,
-        link: linker
-
-    };
+		scope.next=function(){
+			scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=scope.images.length-1;
+		};
+		
+		scope.$watch('currentIndex',function(){
+			scope.images.forEach(function(image){
+				image.visible=false;
+			});
+			scope.images[scope.currentIndex].visible=true;
+		});
+		
+		/* Start: For Automatic slideshow*/
+		var timer;
+		
+		var sliderFunc=function(){
+			timer=$timeout(function(){
+				timer=$timeout(sliderFunc,scope.images[scope.currentIndex].delay);
+                scope.next();
+			},scope.images[scope.currentIndex].delay);
+		};
+		
+		sliderFunc();
+		
+		scope.$on('$destroy',function(){
+			$timeout.cancel(timer);
+		});
+		
+		/* End : For Automatic slideshow*/
+		angular.element(document.querySelectorAll('.arrow')).one('click',function(){
+			$timeout.cancel(timer);
+		});
+    },
+	templateUrl:'templates/scifigallery.html'    
+  }
 });

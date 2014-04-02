@@ -11,7 +11,8 @@ factory('templateProvider', function () {
          "1":"templates/blank.html",
          "2":"templates/hal.html",
          "3":"templates/001scifi.html",
-         "4":"templates/002scifi.html",
+         "4":"templates/overview.html",
+         "5":"templates/fin.html"
     },
     
      provider = function(templateId){
