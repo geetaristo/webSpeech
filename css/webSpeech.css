@@ -42,3 +42,27 @@ body{
 #commandLine{
     text-transform: lowercase;
 }
+
+.hal {
+    width:80%;
+}
+
+.scifi-gallery {
+    background:url('../images/scifi/holodeckbackground.jpg') repeat;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    width:85%;
+    height:85%;
+    min-width:400px;
+    min-height:600px;
+    padding:20px;
+    margin:10px;
+    text-align: center;
+    
+}
+.scifi-gallery img {
+    width:80%;
+    opacity:0.9;
+}

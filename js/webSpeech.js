@@ -3,7 +3,8 @@ var initialWait = 1000;          // initial wait after user types 'start'
 var baseWait = 2000;             // base wait time between text
 var typeWait = 150;              // controls typing speed
 var startOpeningThemeOnIdx = 7;  // index of dialog item where the opening theme starts
-var openingTheme;                // variable for holding the opening theme
+var hal_silly;                   // variable for holding the hal silly audio
+var openingTheme;                // variable for holding the opening theme audio
 
 var dialog = [{text:'hello.', speak:false, timeout:3000, templateName:''},
               {text:'can you hear me?', speak: false, timeout:baseWait, templateName:''},
@@ -13,8 +14,8 @@ var dialog = [{text:'hello.', speak:false, timeout:3000, templateName:''},
               {text:'humans have always imagined they could talk to machines',
                     speak:false, timeout:baseWait, templateName:''},
               {text:'and', speak:false, timeout:baseWait, templateName:''},
-              {text:'the machines would understand.', speak:true, timeout:baseWait, templateName:'1'},
-              {text:'', speak:false, timeout:baseWait, templateName:'1'}
+              {text:'the machines would understand.', speak:true, timeout:baseWait, templateName:''},
+              {text:'', speak:false, timeout:baseWait, templateName:'2'}
              ];
 
 function typeline(text, charPos, callBack){
@@ -56,14 +57,26 @@ function presentDialog(){
             //get template from template provider.
         }
 
-        if(dialogIdx == startOpeningThemeOnIdx)
-            openingTheme.play();
+        if(dialogIdx == startOpeningThemeOnIdx){
+            playTheme();
+        }
+            
     }
 }
 
+function playTheme(){
+    hal_silly.play();
+    hal_silly.addEventListener('ended', function(event){
+        openingTheme.play();
+    });
+}
 
 function start(){
     setTimeout(function(){presentDialog();}, initialWait);
+    
+    hal_silly = document.createElement('audio');
+    hal_silly.setAttribute('src', '../audio/silly_hal.wav');
+    hal_silly.load();
     
     openingTheme = document.createElement('audio');
     openingTheme.setAttribute('src', '../audio/2001ASpaceOdysseyOpening.wav');
