@@ -53,7 +53,7 @@ var dialog = [{text:"hello.", speak:false, //0
                     timeout:500, templateName:'4', typespeed:50}//20
              ];
 
-var dialogIdx = 19;
+var dialogIdx = 0;
 
 function typeline(text, charPos, callBack, waitTime){
     
