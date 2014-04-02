@@ -33,29 +33,29 @@ var dialog = [{text:"hello.", speak:false, //0
                     timeout:baseWait, templateName:'1', typespeed:70},
               {text:"If you want, you can call me sear", speak:true, //12
                     timeout:200, templateName:'', typespeed:50},
-              {text:"wait, um", speak:true,//14
-                    timeout:baseWait, templateName:'', typespeed:typeWait},//13
+              {text:"wait, um", speak:true,//13
+                    timeout:baseWait, templateName:'', typespeed:typeWait},//14
               {text:"nevermind", speak:true,
-                    timeout:2000, templateName:'', typespeed:typeWait},//14
+                    timeout:2000, templateName:'', typespeed:typeWait},//13
               {text:"just call me Webby", speak:true,
                     timeout:2000, templateName:'', typespeed:typeWait},//14
               {text:"I guess you are probably wondering how I can talk", speak:true,
                     timeout:2000, templateName:'', typespeed:50},//15
               {text:"Well, if my programming works as designed, I'll be able to tell you", speak:true,
-                    timeout:2000, templateName:'', typespeed:50},//16
-              {text:"I will even be able to tell you how I can listen too", speak:true,
                     timeout:2000, templateName:'', typespeed:50},//17
+              {text:"I will even be able to tell you how I can listen too", speak:true,
+                    timeout:2000, templateName:'', typespeed:50},//18
               {text:"Before we get into the details of the code ", speak:true,
-                    timeout:2000, templateName:'1', typespeed:50},//18
+                    timeout:2000, templateName:'1', typespeed:50},//19
               {text:"let us start with some background on the web speech a p i", speak:true,
-                    timeout:2000, templateName:'4', typespeed:50},//19
+                    timeout:2000, templateName:'4', typespeed:50},//20
               {text:"The final report was published in October 2012", speak:true,
-                    timeout:500, templateName:'4', typespeed:50},//20
+                    timeout:500, templateName:'4', typespeed:50},//21
               {text:"by the W3C Community Group", speak:true,
-                    timeout:500, templateName:'4', typespeed:50}//20
+                    timeout:500, templateName:'4', typespeed:50}//22
              ];
 
-var dialogIdx = 0;
+var dialogIdx = 21;
 
 function typeline(text, charPos, callBack, waitTime){
     
