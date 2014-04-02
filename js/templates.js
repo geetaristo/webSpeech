@@ -5,7 +5,6 @@
 
 angular.module('myApp.templates' , []).
   value('version', '0.1').
-
 factory('templateProvider', function () {
     
     var templates = {
