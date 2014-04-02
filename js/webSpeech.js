@@ -2,7 +2,7 @@
 var initialWait = 1000;          // initial wait after user types 'start'
 var baseWait = 2000;             // base wait time between text
 var typeWait = 150;              // controls typing speed
-var startOpeningThemeOnIdx = 7;  // index of dialog item where the opening theme starts
+var startOpeningThemeOnIdx = 8;  // index of dialog item where the opening theme starts
 var hal_silly;                   // variable for holding the hal silly audio
 var openingTheme;                // variable for holding the opening theme audio
 
@@ -27,17 +27,14 @@ function typeline(chunk, charPos, callBack){
 		// We're done with that line.
         callBack();
         
-    var scope = angular.element($("#templateContent")).scope();
-    scope.$apply(function(){
-        
-         
-         scope.advanceform(chunk.templateName);
-        
-    })
+        var scope = angular.element($("#templateContent")).scope();
+        scope.$apply(function(){
+             scope.advanceform(chunk.templateName);
+        });
 		return; 
 	}
 	else { 
-		if(charPos==0)
+		if(charPos === 0)
             $('#commandLine').html(text[charPos]);
 		else 
 			$('#commandLine').html($('#commandLine').html() + text[charPos]);

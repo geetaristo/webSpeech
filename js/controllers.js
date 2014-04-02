@@ -7,11 +7,10 @@ angular.module('myApp.controllers', ['myApp.templates']).
     function($scope,templateProvider) {
        
          $scope.templates=  {
-                    "1":"templates/welcome.html",
+                    "1":"templates/blank.html",
                     "2":"templates/001scifi.html",
                     "3":"templates/002scifi.html"
             }
-        
         
         $scope.nextTemplate = function () {
             return $scope.templates["1"];
@@ -25,7 +24,6 @@ angular.module('myApp.controllers', ['myApp.templates']).
              $scope.nextTemplate = function () {
               return $scope.templates[templatename];
             }();
-            
           } 
         }
                                

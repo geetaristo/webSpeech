@@ -9,16 +9,11 @@ angular.module('myApp.templates' , []).
 factory('templateProvider', function () {
     
     var templates = {
-     "1":"templates/welcome.html",
-     "2":"templates/hal.html",
-     "3":"templates/001scifi.html"
+         "1":"templates/blank.html",
+         "2":"templates/hal.html",
+         "3":"templates/001scifi.html",
+         "4":"templates/002scifi.html",
     },
-
-//    var templates = {
-//     "1":"templates/001scifi.html",
-//     "2":"templates/hal.html",
-//     "3":"templates/001scifi.html"
-//    },
     
      provider = function(templateId){
         return findMatchingTemplate(templateId);
