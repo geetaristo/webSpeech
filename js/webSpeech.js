@@ -26,7 +26,9 @@ var dialog = [{text:"hello.", speak:false, //0
               {text:" ", speak:false, //9 ... this is H.A.L.
                     timeout:4000, templateName:'2', typespeed:typeWait}, 
               {text:" ", speak:false, //10 ... sci-fi gallery
-                    timeout:80000, templateName:'3', typespeed:typeWait}, 
+                    timeout:78000, templateName:'3', typespeed:typeWait}, 
+              {text:" ", speak:false, //10 ... sci-fi gallery
+                    timeout:2000, templateName:'0', typespeed:typeWait}, 
               {text:"I guess by now you realize I am not so dumb anymore", speak:true, //11
                     timeout:baseWait, templateName:'1', typespeed:70},
               {text:"If you want, you can call me sear", speak:true, //12
