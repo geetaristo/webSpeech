@@ -12,6 +12,8 @@ angular.module('myApp.controllers', ['myApp.templates']).
          "scifi":"templates/001scifi.html",
          "apidocdraft":"templates/draftdoc.html",
          "apidocfinal":"templates/finaldoc.html",
+         "speechSynth1":"templates/speech-synth-snip1.html",
+         "speechSynth2":"templates/speech-synth-snip2.html",
          "fin":"templates/fin.html"
      };
        

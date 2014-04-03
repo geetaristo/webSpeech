@@ -62,6 +62,17 @@ var dialog = [{text:"hello.",
                         speak:true, timeout:4000, template:'apidocfinal', typespeed:50},
               {text:browserSupportText,
                         speak:true, timeout:1500, template:'', typespeed:50},
+              {text:"It contains 2 major component interfaces.",
+                        speak:true, timeout:3000, templateName:'1', typespeed:typeWait},
+              {text:"Speech Synthesis",
+                        speak:true, timeout:3000, templateName:'speechSynth1', typespeed:typeWait} ,  
+               {text:"Which is how I am speaking to you now",
+                        speak:true, timeout:3000, templateName:'speechSynth2', typespeed:typeWait},
+              {text:"And Speech Recognition which is how I listen",
+                        speak:true, timeout:3000, templateName:'1', typespeed:typeWait},
+              {text:"And accept commands",
+                        speak:true, timeout:3000, templateName:'1', typespeed:typeWait}
+
               {text:"goodbye",
                         speak:true, timeout:500, template:'fin', typespeed:typeWait}
              ];
