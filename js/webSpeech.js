@@ -5,7 +5,7 @@ var startOpeningThemeOnIdx = 10;  // index of dialog item where the opening them
 var hal_silly;                   // variable for holding the hal silly audio
 var openingTheme;                // variable for holding the opening theme audio
 var overviewtext = "The specification was originally proposed by Google in 2010 in a paper authored by Satish Sampath and Bjorn Bringert.  The paper outlined a new specification for web browsers to produce speech from text, and also produce text from Speech.";
-var finalSpecText = "The final report was published in October 2012 by the W3C Community Group. There are 3 major components of the spec Voice Recognition, Speech Synthesis, and and Grammars.";
+var finalSpecText = "The final report was published in October 2012 by the W3C Community Group.";
 var browserSupportText = "Google Chrome implemented the SpeechRecognition support in version 25.  But SpeechSynthesis was unsupported until the most very recent version of Chrome, version 33.";
 
 var dialog = [{text:"hello.", 
@@ -60,25 +60,24 @@ var dialog = [{text:"hello.",
                         speak:true, timeout:4000, template:'', typespeed:50},
               {text:finalSpecText,
                         speak:true, timeout:4000, template:'apidocfinal', typespeed:50},
+              {text:"It contains 2 major component interfaces.",
+                        speak:true, timeout:1500, templateName:'1', typespeed:70},
+              {text:"Speech Synthesis",
+                        speak:true, timeout:1500, templateName:'speechSynth1', typespeed:70} ,  
+               {text:"Which is how I am speaking to you now",
+                        speak:true, timeout:1500, templateName:'speechSynth2', typespeed:70},
+              {text:"And Speech Recognition, which is how I listen",
+                        speak:true, timeout:1500, templateName:'1', typespeed:70},
+              {text:"And accept commands",
+                        speak:true, timeout:1500, templateName:'1', typespeed:70},
               {text:browserSupportText,
                         speak:true, timeout:1500, template:'', typespeed:50},
-              {text:"It contains 2 major component interfaces.",
-                        speak:true, timeout:3000, templateName:'1', typespeed:typeWait},
-              {text:"Speech Synthesis",
-                        speak:true, timeout:3000, templateName:'speechSynth1', typespeed:typeWait} ,  
-               {text:"Which is how I am speaking to you now",
-                        speak:true, timeout:3000, templateName:'speechSynth2', typespeed:typeWait},
-              {text:"And Speech Recognition which is how I listen",
-                        speak:true, timeout:3000, templateName:'1', typespeed:typeWait},
-              {text:"And accept commands",
-                        speak:true, timeout:3000, templateName:'1', typespeed:typeWait}
-
               {text:"goodbye",
                         speak:true, timeout:500, template:'fin', typespeed:typeWait}
              ];
 
 var START_onhal = 10;
-var dialogIdx = 0;
+var dialogIdx = 26;
 
 function typeline(text, charPos, callBack, waitTime){
 	if(charPos == text.length){ 

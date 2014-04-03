@@ -8,6 +8,7 @@ a:link {color:#FFFFFF; text-decoration:none;}      /* unvisited link */
 a:visited {color:#FFFFFF; text-decoration:none;}  /* visited link */
 a:hover {color:#FFFFFF; text-decoration:underline;}  /* mouse over link */
 a:active {color:#FFFFFF; text-decoration:none;}  /* selected link */
+pre {color:#FFF}
 
 #textOut{
     width:85%;
