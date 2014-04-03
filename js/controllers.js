@@ -11,7 +11,9 @@ angular.module('myApp.controllers', ['myApp.templates']).
          "2":"templates/hal.html",
          "3":"templates/001scifi.html",
          "4":"templates/overview.html",
-         "5":"templates/fin.html"
+         "5":"templates/fin.html",
+         "speechSynth1":"templates/speech-synth-snip1.html",
+         "speechSynth2":"templates/speech-synth-snip2.html",
      };
        
 

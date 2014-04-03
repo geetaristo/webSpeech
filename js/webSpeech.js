@@ -52,7 +52,17 @@ var dialog = [{text:"hello.", speak:false, //0
               {text:"The final report was published in October 2012", speak:true,
                     timeout:500, templateName:'4', typespeed:50},//20
               {text:"by the W3C Community Group", speak:true,
-                    timeout:500, templateName:'4', typespeed:50}//20
+                    timeout:500, templateName:'4', typespeed:50},//20
+              {text:"It contains 2 major component interfaces.", speak:true, //0
+                    timeout:3000, templateName:'1', typespeed:typeWait},
+              {text:"Speech Synthesis", speak:true, //0
+                    timeout:3000, templateName:'speechSynth1', typespeed:typeWait} ,  
+               {text:"Which is how I am speaking to you now", speak:true, //0
+                    timeout:3000, templateName:'speechSynth2', typespeed:typeWait},
+              {text:"And Speech Recognition which is how I listen", speak:true, //0
+                    timeout:3000, templateName:'1', typespeed:typeWait},
+                {text:"And accept commands", speak:true, //0
+                    timeout:3000, templateName:'1', typespeed:typeWait}
              ];
 
 var dialogIdx = 0;
