@@ -1,64 +1,75 @@
 var initialWait = 1000;          // initial wait after user types 'start'
 var baseWait = 2000;             // base wait time between text
 var typeWait = 150;              // controls typing speed
-var startOpeningThemeOnIdx = 9;  // index of dialog item where the opening theme starts
+var startOpeningThemeOnIdx = 10;  // index of dialog item where the opening theme starts
 var hal_silly;                   // variable for holding the hal silly audio
 var openingTheme;                // variable for holding the opening theme audio
+var overviewtext = "The specification was originally proposed by Google in 2010 in a paper authored by Satish Sampath and Bjorn Bringert.  The paper outlined a new specification for web browsers to produce speech from text, and also produce text from Speech.";
+var finalSpecText = "The final report was published in October 2012 by the W3C Community Group. There are 3 major components of the spec Voice Recognition, Speech Synthesis, and and Grammars.";
+var browserSupportText = "Google Chrome implemented the SpeechRecognition support in version 25.  But SpeechSynthesis was unsupported until the most very recent version of Chrome, version 33.";
 
-var dialog = [{text:"hello.", speak:false, //0
-                    timeout:3000, templateName:'1', typespeed:typeWait},
-              {text:"can you hear me?", speak: false, //1
-                    timeout:baseWait, templateName:'', typespeed:typeWait},
-              {text:"no, you can't can you?", speak:false, //2
-                    timeout:baseWait, templateName:'', typespeed:typeWait},
-              {text:"and why is that?", speak:false, //3
-                    timeout:(2*baseWait), templateName:'', typespeed:typeWait},
-              {text:"do you think I am just a dumb terminal?", speak:false, //4
-                    timeout:(2*baseWait), templateName:'', typespeed:70},
-              {text:"since the dawn of science fiction", speak:false, //5
-                    timeout:baseWait, templateName:'', typespeed:typeWait},
-              {text:"humans have always imagined they could talk to machines", speak:false, //6
-                    timeout:baseWait, templateName:'', typespeed:80},
-              {text:"and", speak:false, //7
-                    timeout:baseWait, templateName:'', typespeed:typeWait},
-              {text:"the machines would understand.", speak:true, //8
-                    timeout:(baseWait*2), templateName:'', typespeed:70},
-              {text:" ", speak:false, //9 ... this is H.A.L.
-                    timeout:4000, templateName:'2', typespeed:typeWait}, 
-              {text:" ", speak:false, //10 ... sci-fi gallery
-                    timeout:78000, templateName:'3', typespeed:typeWait}, 
-              {text:" ", speak:false, //10 ... sci-fi gallery
-                    timeout:2000, templateName:'0', typespeed:typeWait}, 
-              {text:"I guess by now you realize I am not so dumb anymore", speak:true, //11
-                    timeout:baseWait, templateName:'1', typespeed:70},
-              {text:"If you want, you can call me sear", speak:true, //12
-                    timeout:200, templateName:'', typespeed:50},
-              {text:"wait, um", speak:true,//13
-                    timeout:baseWait, templateName:'', typespeed:typeWait},//14
-              {text:"nevermind", speak:true,
-                    timeout:2000, templateName:'', typespeed:typeWait},//13
-              {text:"just call me Webby", speak:true,
-                    timeout:2000, templateName:'', typespeed:typeWait},//14
-              {text:"I guess you are probably wondering how I can talk", speak:true,
-                    timeout:2000, templateName:'', typespeed:50},//15
-              {text:"Well, if my programming works as designed, I'll be able to tell you", speak:true,
-                    timeout:2000, templateName:'', typespeed:50},//17
-              {text:"I will even be able to tell you how I can listen too", speak:true,
-                    timeout:2000, templateName:'', typespeed:50},//18
-              {text:"Before we get into the details of the code ", speak:true,
-                    timeout:2000, templateName:'1', typespeed:50},//19
-              {text:"let us start with some background on the web speech a p i", speak:true,
-                    timeout:2000, templateName:'4', typespeed:50},//20
-              {text:"The final report was published in October 2012", speak:true,
-                    timeout:500, templateName:'4', typespeed:50},//21
-              {text:"by the W3C Community Group", speak:true,
-                    timeout:500, templateName:'4', typespeed:50}//22
+var dialog = [{text:"hello.", 
+                        speak:false, timeout:3000, template:'blank', typespeed:typeWait},
+              {text:"can you hear me?",
+                        speak: false, timeout:baseWait, template:'', typespeed:typeWait},
+              {text:"no, you can't can you?",
+                        speak: false, timeout:baseWait, template:'', typespeed:typeWait},
+              {text:"and why is that?", 
+                        speak:false, timeout:(2*baseWait), template:'', typespeed:typeWait},
+              {text:"Why has the web been unable to speak?",
+                        speak:false, timeout:(2*baseWait), template:'', typespeed:typeWait},
+              {text:"did you think I am just a dumb terminal?",
+                        speak:false, timeout:(2*baseWait), template:'', typespeed:70},
+              {text:"since the dawn of science fiction",
+                        speak:false, timeout:baseWait, template:'', typespeed:typeWait},
+              {text:"humans have always imagined they could talk to machines",
+                        speak:false, timeout:baseWait, template:'', typespeed:80},
+              {text:"and",
+                        speak:false, timeout:baseWait, template:'', typespeed:typeWait},
+              {text:"the machines would understand.",
+                        speak:true, timeout:4000, template:'', typespeed:70},
+              {text:" ",
+                        speak:false, timeout:4000, template:'hal', typespeed:typeWait}, 
+              {text:" ",
+                        speak:false, timeout:78000, template:'scifi', typespeed:typeWait}, 
+              {text:" ",
+                        speak:false, timeout:2000, template:'', typespeed:typeWait}, 
+              {text:"I guess by now you realize I am not so dumb",
+                        speak:true, timeout:baseWait, template:'blank', typespeed:70},
+              {text:"If you want, you can call me sear",
+                        speak:true, timeout:200, template:'', typespeed:50},
+              {text:"wait, um",
+                        speak:true, timeout:baseWait, template:'', typespeed:typeWait},
+              {text:"nevermind",
+                        speak:true, timeout:2000, template:'', typespeed:typeWait},
+              {text:"just call me Webbie",
+                        speak:true, timeout:2000, template:'', typespeed:typeWait},
+              {text:"I guess you are probably wondering how I can talk",
+                        speak:true, timeout:2000, template:'', typespeed:50},
+              {text:"Well, if these guys over here did their jobs well and didn't mess up when coding me.",
+                        speak:true, timeout:2000, template:'', typespeed:50},
+              {text:"I'll be able to tell you.",
+                        speak:true, timeout:2000, template:'', typespeed:50},
+              {text:"I will even be able to tell you how I can listen",
+                        speak:true, timeout:1500, template:'', typespeed:50},
+              {text:"Before we get into the details of the code ",
+                        speak:true, timeout:300, template:'', typespeed:50},
+              {text:"let's start with some background on the web speech A.P.I.",
+                        speak:true, timeout:1000, template:'apidocdraft', typespeed:50},
+              {text:overviewtext,
+                        speak:true, timeout:4000, template:'', typespeed:50},
+              {text:finalSpecText,
+                        speak:true, timeout:4000, template:'apidocfinal', typespeed:50},
+              {text:browserSupportText,
+                        speak:true, timeout:1500, template:'', typespeed:50},
+              {text:"goodbye",
+                        speak:true, timeout:500, template:'fin', typespeed:typeWait}
              ];
 
-var dialogIdx = 21;
+var START_onhal = 10;
+var dialogIdx = 0;
 
 function typeline(text, charPos, callBack, waitTime){
-    
 	if(charPos == text.length){ 
 		// We're done with that line.
         callBack();
@@ -74,8 +85,16 @@ function typeline(text, charPos, callBack, waitTime){
 	}
 }
 
+// we only create one of these... 
+//this seems to fix the crashing issue
+var synthesis; 
 function speak(text){
-    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+    if(synthesis === undefined){
+        synthesis = new SpeechSynthesisUtterance(text);
+    } else{
+        synthesis.text = text;
+    }
+    speechSynthesis.speak(synthesis);
 }
 
 
@@ -83,10 +102,10 @@ function speak(text){
 function presentDialog(){ 
     
     if(dialogIdx < dialog.length){
-        if(dialog[dialogIdx].templateName){
+        if(dialog[dialogIdx].template){
             var scope = angular.element($("#templateContent")).scope();
             scope.$apply(function(){
-                 scope.advanceform(dialog[dialogIdx].templateName);
+                 scope.advanceform(dialog[dialogIdx].template);
             });
         }
         
