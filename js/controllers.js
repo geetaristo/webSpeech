@@ -52,11 +52,15 @@ angular.module('myApp.controllers', ['myApp.templates']).
                                                     // as opposed to pre-recorded audio that would need to be re-recorded... 
                                                     /// it can do things like read e-mail.
             "templates/speech-recog-repeat.html",
-                                                    // TODO: Recognition API overview
             "templates/speech-recog-conversation.html",
                                                     // TODO: Form example
                                                     // TODO: Nav example
                                                     // TODO: This app's code overview.
+            "templates/speech-synth-snip4.html",
+            "templates/speech-rec-overview.html",
+            "templates/speech-rec-snip1.html",
+            "templates/speech-rec-snip2.html",
+            "templates/speech-rec-snip3.html",
             "templates/blank.html",
             "templates/fin.html",
             "templates/hal2.html",

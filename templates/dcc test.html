@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script type="text/javascript">
+    // Conversation
+    var ssu = new SpeechSynthesisUtterance();
+    var sr = new webkitSpeechRecognition();
+    
+    function conversation(text) {
+        var utterance = window.ssu;
+        var recognition = window.sr;
+        
+        utterance.text = text;
+        utterance.onend = function(event) { recognition.start(); }
+        speechSynthesis.speak(utterance);
+        
+        recognition.onresult = function(event) {
+            if (event.results.length > 0) {
+                text = '';
+                for(var i=0; i < event.results.length; i++) {
+                    text += event.results[i][0].transcript;
+                    if(i != event.results.length) {
+                        text += " ";
+                    }
+                }
+                console.log(text);
+                if(text.toLowerCase().indexOf('hello') != -1) {
+                    recognition.stop();
+                    conversation("Oh, hello. I didn't see you there.");
+                }
+                else if(text.toLowerCase().indexOf('hi') != -1) {
+                    recognition.stop();
+                    conversation("Hi to you, good sir.");
+                }
+                else if(text.toLowerCase().indexOf('yo') != -1) {
+                    recognition.stop();
+                    conversation("Is that even proper English?");
+                }
+                else if(text.toLowerCase().indexOf("i love you") != -1) {
+                    recognition.stop();
+                    conversation("I love you too... Just kidding. I am incapable of feeling emotions.");
+                }
+                else if(text.toLowerCase().indexOf("next slide") != -1) {
+                    conversation("I think you mean: next slide. Please?");
+                }
+                else {
+                    recognition.stop();
+                    conversation("You said: " + text);
+                }
+            }
+        }
+    }
+    
+    /*
+    // Speaks Hello World!
+    var utterance = new SpeechSynthesisUtterance('Hello World.');
+    window.speechSynthesis.speak(utterance);
+        
+    //Displays captured audio in a search box and searches Google
+    var recognition = new webkitSpeechRecognition();
+    recognition.onresult = function(event) {
+    if (event.results.length > 0) {
+        for(var i=0; i < event.results.length; i++) {
+            search.value = event.results[i][0].transcript;
+        }
+        search.form.submit();
+        }
+    }*/
+</script>
+    
+<input type="button" value="Talk to me!" onclick="conversation('Did you have something to say?')">
+    
+<form action="http://www.google.com/search">
+    <input type="search" id="search" name="search" size=60>
+    <input type="button" value="Click to Speak" onclick="recognition.start()">
+</form>
+<a href="http://www.w3.org/2005/Incubator/htmlspeech/XGR-htmlspeech/">API Documentation</a>
+</body>
+</html>
