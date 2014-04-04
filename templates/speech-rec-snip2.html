@@ -2,13 +2,13 @@
 	<div id="dialogContent">
 	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
     </div>
-    <speaker text="Simply create a new SpeechRecognition Object and call the start method. Notice that here the object contains a vendor prefix since the spec is so early in its adoption." 
+    <speaker text="Simply create a new SpeechRecognition object and call the start() method.|The spec is still early in its adoption so a vendor prefix is required.| One more thing." 
         typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
     
     <pre><code>
 var recognition = new webkitSpeechRecognition();
 
-        
+
 recognition.start();
     
     </code></pre>

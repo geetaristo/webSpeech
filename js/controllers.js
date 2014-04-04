@@ -48,6 +48,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/speech-rec-overview.html",
             "templates/speech-rec-snip1.html",
             "templates/speech-rec-snip2.html",
+            "templates/speech-rec-snip3.html",
             "templates/fin.html",
             "templates/blank.html",
             "templates/hal2.html",
@@ -55,7 +56,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/credits.html"
         ];
        
-        $scope.templateIdx = 0; // Change this value to start on a new template
+        $scope.templateIdx = 15; // Change this value to start on a new template
         $scope.nextTemplate = function () {
             return $scope.templates[$scope.templateIdx++];
           }();
