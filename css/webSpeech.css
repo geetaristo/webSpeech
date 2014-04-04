@@ -8,7 +8,7 @@ a:link {color:#FFFFFF; text-decoration:none;}      /* unvisited link */
 a:visited {color:#FFFFFF; text-decoration:none;}  /* visited link */
 a:hover {color:#FFFFFF; text-decoration:underline;}  /* mouse over link */
 a:active {color:#FFFFFF; text-decoration:none;}  /* selected link */
-pre {color:#FFF}
+pre {color:#FFF; font-size:.8em;}
 
 #textOut{
     width:85%;
@@ -16,7 +16,19 @@ pre {color:#FFF}
     margin-left:auto;
     margin-right:auto;
 }
-
+.centerofpage {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    margin-left: 50%;
+    margin-top: 13%;
+    display: inline-block;
+    width: 45px;
+    position: fixed;
+    overflow: hidden;
+}
 #templateContent{
     width:85%;
     margin-left:auto;

@@ -34,7 +34,7 @@ angular.module('myApp.directives', ['ngAnimate'])
 		scope.currentIndex=0;
 
 		scope.next=function(){
-			scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.currentIndex=scope.images.length-1;
+			scope.currentIndex<scope.images.length-1?scope.currentIndex++:scope.advanceform();
 		};
 		
 		scope.$watch('currentIndex',function(){
@@ -42,6 +42,7 @@ angular.module('myApp.directives', ['ngAnimate'])
 				image.visible=false;
 			});
 			scope.images[scope.currentIndex].visible=true;
+
 		});
 		
 		/* Start: For Automatic slideshow*/
@@ -63,8 +64,81 @@ angular.module('myApp.directives', ['ngAnimate'])
 		/* End : For Automatic slideshow*/
 		angular.element(document.querySelectorAll('.arrow')).one('click',function(){
 			$timeout.cancel(timer);
+            scope.advanceForm();
 		});
     },
 	templateUrl:'templates/scifigallery.html'    
   }
+}).directive('speaker', function($timeout){
+    return {
+        restrict: 'AE',
+        replace: true,
+        link: function (scope, elem, attrs) {
+            scope.commandline = ' ';
+            scope.sentences = attrs.text.split("|");
+            scope.sentenceIdx = 0;
+            if(scope.synthesis){
+                scope.synthesis.text = scope.sentences[scope.sentenceIdx];
+                if(attrs.speak == "true")
+                    speechSynthesis.speak(scope.synthesis);
+            }
+
+            if(attrs.typeit==="true"){
+                scope.charpos = 0;
+                scope.commandline = ' ';
+                scope.nextchar=function(){
+                    scope.commandline += scope.synthesis.text[scope.charpos];
+                    scope.charpos++;
+                };
+
+                var texttimer;
+                scope.$watch('charpos',function(){
+                    if(scope.charpos == scope.synthesis.text.length){
+                        $timeout.cancel(texttimer);
+                        scope.sentenceIdx++;
+                        if(scope.sentenceIdx < scope.sentences.length){
+                            scope.synthesis.text = scope.sentences[scope.sentenceIdx];
+                            $timeout(speakAndSpell, attrs.pause);
+                        } else {
+                            scope.sentenceIdx = 0;
+                            if(attrs.advance=="true"){
+                                $timeout(scope.advanceform, attrs.pause);
+                            }
+                        }
+                    }
+                });
+                
+                var speakAndSpell = function(){
+                    if(attrs.speak == "true")
+                        speechSynthesis.speak(scope.synthesis);
+                    scope.commandline = ' ';
+                    scope.charpos = 0;
+                    typeline();
+                }
+                
+                var typeline=function(){
+                    texttimer=$timeout(function(){
+                        texttimer=$timeout(typeline, attrs.typespeed);
+                        scope.nextchar();
+                    }, attrs.typespeed);
+                };
+
+                typeline();
+                
+                scope.$on('$destroy',function(){
+                    $timeout.cancel(texttimer);
+                });
+
+            };
+
+        }
+    }
+}).directive('flippage', function($timeout){
+    return {
+        restrict: 'AE',
+        replace: true,
+        link: function (scope, elem, attrs) {
+            $timeout(scope.advanceform, attrs.timewait);
+        }
+    }
 });

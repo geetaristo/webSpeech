@@ -1,7 +1,11 @@
 <div>
+	<div id="dialogContent">
+	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
+    </div>
+    <speaker text="In your JavaScript code|you simply create a new instance of a SpeechSynthesisUtterance|and pass it to the speechSynthesis object."
+        typeit="true" typespeed=30 pause=1000 speak="true" advance="true"/>
     <pre>
-speechSynthesis.speak (
- new SpeechSynthesisUtterance
-        ("Which is how I am speaking to you now"));
+        speechSynthesis.speak (
+             new SpeechSynthesisUtterance("This is what is producing my speech"));
    </pre>
 </div>
