@@ -45,7 +45,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
         //START hal = 10;
         //START ongallery=11;
 
-    $scope.templateIdx = 0;
+    $scope.templateIdx = 9;
     $scope.nextTemplate = function () {
         return $scope.templates[$scope.templateIdx++];
       }();

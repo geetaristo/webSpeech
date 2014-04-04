@@ -141,4 +141,15 @@ angular.module('myApp.directives', ['ngAnimate'])
             $timeout(scope.advanceform, attrs.timewait);
         }
     }
+}).directive('scrolldiv', function($timeout){
+    return {
+        restrict: 'AE',
+        replace: true,
+        link: function (scope, elem, attrs) {
+            $timeout(function(){
+                $('#scrolly').animate({scrollTop:elem.offset().top+1000}, Number(attrs.speed));
+            }, Number(attrs.scrollwait));
+        }
+    }
+
 });
