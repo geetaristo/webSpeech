@@ -45,6 +45,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/speech-synth-snip2.html",
             "templates/speech-synth-snip3.html",
             "templates/speech-synth-snip4.html",
+            "templates/speech-recog-overview.html",
             "templates/fin.html",
             "templates/blank.html",
             "templates/hal2.html",
