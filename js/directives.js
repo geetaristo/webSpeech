@@ -138,7 +138,7 @@ angular.module('myApp.directives', ['ngAnimate'])
         restrict: 'AE',
         replace: true,
         link: function (scope, elem, attrs) {
-            $timeout(scope.advanceform, attrs.timewait);
+            $timeout(scope.advanceform, Number(attrs.timewait));
         }
     }
 }).directive('scrolldiv', function($timeout){

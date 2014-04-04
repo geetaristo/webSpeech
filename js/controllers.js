@@ -48,7 +48,8 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/fin.html",
             "templates/blank.html",
             "templates/hal2.html",
-            "templates/blank.html"
+            "templates/blank.html",
+            "templates/credits.html"
         ];
        
         $scope.templateIdx = 0; // Change this value to start on a new template
@@ -68,27 +69,28 @@ angular.module('myApp.controllers', ['myApp.templates']).
         };
 
         $scope.images = [
-                {src: "/images/scifi/01-metropolis.jpg",  delay: 2900},
+                {src: "/images/scifi/01-metropolis.jpg",  delay: 3100},
                 {src: "/images/scifi/02-aztecmummyvshumanrobot.jpg",  delay: 2300},
-                {src: "/images/scifi/03-oldGermanRobot.jpg",  delay: 1900},
-                {src: "/images/scifi/04-oldEurpeanRobot.jpg",  delay: 1300},
-                {src: "/images/scifi/05-evil-robot.jpg",  delay: 1500},
-                {src: "/images/scifi/06-RobbyTheRobotAndGirl.jpg",  delay: 1500},
-                {src: "/images/scifi/07-lostinspace2.jpg",  delay: 1500},
-                {src: "/images/scifi/08-TheDayTheEarthStoodStill.jpg",  delay: 1500},
-                {src: "/images/scifi/09-starwars.jpg",  delay: 1500},
-                {src: "/images/scifi/10-jetsons.jpg",  delay: 1500},
-                {src: "/images/scifi/11-shortCircuit.jpg",  delay: 1500},
-                {src: "/images/scifi/12-terminator.jpg",  delay: 1500},
-                {src: "/images/scifi/13-scotty.jpg",  delay: 2200},
-                {src: "/images/scifi/15-Rocky_4_robot.jpg",  delay: 1200},
-                {src: "/images/scifi/16-Data_intoxicated.jpg",  delay: 1200},
-                {src: "/images/scifi/17-OptimusPrime1.jpg",  delay: 1200},
-                {src: "/images/scifi/18-HitchhikersGuideToTheGalaxy.jpg",  delay: 2200},
-                {src: "/images/scifi/19-iRobot.jpg",  delay: 1600},
-                {src: "/images/scifi/20-Jarvis.IronManSuit.jpg",  delay: 1800},
-                {src: "/images/scifi/21-her-joaquin-phoenix.jpg",  delay: 2000},
-                {src: "/images/scifi/14-cylon_replaced1.jpg",  delay: 4000}
+                {src: "/images/scifi/03-oldGermanRobot.jpg",  delay: 2600},
+                {src: "/images/scifi/04-oldEurpeanRobot.jpg",  delay: 1800},
+                {src: "/images/scifi/05-evil-robot.jpg",  delay: 2700},
+                {src: "/images/scifi/07-lostinspace2.jpg",  delay: 2000},
+                {src: "/images/scifi/06-RobbyTheRobotAndGirl.jpg",  delay: 2500},
+                {src: "/images/scifi/08-TheDayTheEarthStoodStill.jpg",  delay: 1900},
+                {src: "/images/scifi/10-jetsons.jpg",  delay: 2500},
+                {src: "/images/scifi/sleeper.jpg",  delay: 2000},
+                {src: "/images/scifi/09-starwars.jpg",  delay: 3000},
+                {src: "/images/scifi/11-shortCircuit.jpg",  delay: 600},
+                {src: "/images/scifi/12-terminator.jpg",  delay: 1000},
+                {src: "/images/scifi/13-scotty.jpg",  delay: 4000},
+                {src: "/images/scifi/15-Rocky_4_robot.jpg",  delay: 350},
+                {src: "/images/scifi/17-OptimusPrime1.jpg",  delay: 800},
+                {src: "/images/scifi/16-Data_intoxicated.jpg",  delay: 1950},
+                {src: "/images/scifi/18-HitchhikersGuideToTheGalaxy.jpg",  delay: 1000},
+                {src: "/images/scifi/19-iRobot.jpg",  delay: 1300},
+                {src: "/images/scifi/20-Jarvis.IronManSuit.jpg",  delay: 1300},
+                {src: "/images/scifi/21-her-joaquin-phoenix.jpg",  delay: 1400},
+                {src: "/images/scifi/14-cylon_replaced1.jpg",  delay: 3000}
 
             ];
 
