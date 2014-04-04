@@ -24,3 +24,5 @@
  * microphone issues... having to have a user constantly click
  * mobile implementation
  * thinking that perhaps webSpeech.js should change, and the text will just be part of the templates and will be driven of an ng-model attribute?
+ * a good directive to have would be, speak and show a section of the page.
+ 
