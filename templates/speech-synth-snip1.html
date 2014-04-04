@@ -2,10 +2,10 @@
 	<div id="dialogContent">
 	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
     </div>
-    <speaker text="The first part of the interface I'd like to show you|is the SpeechSynthesis object's interface|This is what is producing my speech."
-        typeit="true" typespeed=30 pause=3000 speak="true" advance="true"/>
-    <scrolldiv speed=12000 scrollwait=5200>
-    <pre id="scrolly"><code>
+    <speaker text="The first part of the interface I'd like to show you is the SpeechSynthesis object's interface|This is what is producing my speech.|As you will see in the next slide|you do not have to instantiate this object|You will only need to call methods on speechSynthesis"
+        typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
+    
+    <pre><code>
     interface SpeechSynthesis {
       readonly attribute boolean pending;
       readonly attribute boolean speaking;
@@ -17,59 +17,10 @@
       void resume();
       SpeechSynthesisVoiceList getVoices();
     };
-
-    [NoInterfaceObject]
-    interface SpeechSynthesisGetter
-    {
-      readonly attribute SpeechSynthesis speechSynthesis;
-    };
-
-    Window implements SpeechSynthesisGetter;
-
-    [Constructor,
-     Constructor(DOMString text)]
-    interface SpeechSynthesisUtterance : EventTarget {
-      attribute DOMString text;
-      attribute DOMString lang;
-      attribute DOMString voiceURI;
-      attribute float volume;
-      attribute float rate;
-      attribute float pitch;
-
-      attribute EventHandler onstart;
-      attribute EventHandler onend;
-      attribute EventHandler onerror;
-      attribute EventHandler onpause;
-      attribute EventHandler onresume;
-      attribute EventHandler onmark;
-      attribute EventHandler onboundary;
-    };
-
-    interface SpeechSynthesisEvent : Event {
-        readonly attribute unsigned long charIndex;
-        readonly attribute float elapsedTime;
-        readonly attribute DOMString name;
-    };
-
-    interface SpeechSynthesisVoice {
-      readonly attribute DOMString voiceURI;
-      readonly attribute DOMString name;
-      readonly attribute DOMString lang;
-      readonly attribute boolean localService;
-      readonly attribute boolean default;
-    };
-
-    interface SpeechSynthesisVoiceList {
-      readonly attribute unsigned long length;
-      getter SpeechSynthesisVoice item(in unsigned long index);
-    }
-    
-    
-    
-    
+   
     
     </code></pre>
-    </scrolldiv>
+
     <!-- img src="/images/speechRecognitionIface.PNG" -->
 
 </div>
