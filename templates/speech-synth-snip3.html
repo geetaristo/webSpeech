@@ -1,0 +1,31 @@
+<div>
+	<div id="dialogContent">
+	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
+    </div>
+    <speaker text="Let's take a look at the SpeechSynthesisUtterance interface|This is the object that we used in the last slide to create the speech that the speechSynthesis convert's to audio.|It has options for setting the text, the language, and a number of other options|It also provides callbacks|To be efficient you can do what I do in my code"
+        typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
+    <scrolldiv speed=12000 scrollwait=5200>
+    <pre id="scrolly"><code>
+
+    interface SpeechSynthesisUtterance : EventTarget {
+      attribute DOMString text;
+      attribute DOMString lang;
+      attribute DOMString voiceURI;
+      attribute float volume;
+      attribute float rate;
+      attribute float pitch;
+
+      attribute EventHandler onstart;
+      attribute EventHandler onend;
+      attribute EventHandler onerror;
+      attribute EventHandler onpause;
+      attribute EventHandler onresume;
+      attribute EventHandler onmark;
+      attribute EventHandler onboundary;
+    };
+
+    </code></pre>
+    </scrolldiv>
+    <!-- img src="/images/speechRecognitionIface.PNG" -->
+
+</div>

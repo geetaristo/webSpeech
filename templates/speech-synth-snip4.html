@@ -1,0 +1,21 @@
+<div>
+	<div id="dialogContent">
+	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
+    </div>
+    <speaker text="and treat SpeechSynthesis Utterance as a singleton.|Then you can set the text field to a new value|and reuse the object.|I am actually an Angular application|and my text comes from an Angular directive.|I won't bother to get into those details now|but if there's time
+maybe you'll get a chance to take a closer look inside my code.|At the end of this presentation I will give you a link to where I am stored on github"
+        typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
+    <pre> <code>
+        var msg  = new SpeechSynthesisUtterance();
+          
+        msg.text = "Do what I do and simply set the text value";
+        
+        speechSynthesis.speak(msg);
+        
+        msg.text = "Then set it to the next thing you want to say";
+
+        speechSynthesis.speak(msg);
+        
+    </code> </pre>
+
+</div>

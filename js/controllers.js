@@ -51,7 +51,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/blank.html"
         ];
        
-        $scope.templateIdx = 12;
+        $scope.templateIdx = 0; // Change this value to start on a new template
         $scope.nextTemplate = function () {
             return $scope.templates[$scope.templateIdx++];
           }();
