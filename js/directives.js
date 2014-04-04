@@ -64,7 +64,7 @@ angular.module('myApp.directives', ['ngAnimate'])
 		/* End : For Automatic slideshow*/
 		angular.element(document.querySelectorAll('.arrow')).one('click',function(){
 			$timeout.cancel(timer);
-            scope.advanceForm();
+            scope.advanceform();
 		});
     },
 	templateUrl:'templates/scifigallery.html'    
@@ -107,7 +107,7 @@ angular.module('myApp.directives', ['ngAnimate'])
                         }
                     }
                 });
-                
+
                 var speakAndSpell = function(){
                     if(attrs.speak == "true")
                         speechSynthesis.speak(scope.synthesis);
@@ -138,7 +138,10 @@ angular.module('myApp.directives', ['ngAnimate'])
         restrict: 'AE',
         replace: true,
         link: function (scope, elem, attrs) {
-            $timeout(scope.advanceform, Number(attrs.timewait));
+            var tmr = $timeout(scope.advanceform, Number(attrs.timewait));
+            scope.$on('$destroy',function(){
+                    $timeout.cancel(tmr);
+            });
         }
     }
 }).directive('scrolldiv', function($timeout){
@@ -146,10 +149,118 @@ angular.module('myApp.directives', ['ngAnimate'])
         restrict: 'AE',
         replace: true,
         link: function (scope, elem, attrs) {
-            $timeout(function(){
+            var stimer = $timeout(function(){
                 $('#scrolly').animate({scrollTop:elem.offset().top+1000}, Number(attrs.speed));
             }, Number(attrs.scrollwait));
+
+            scope.$on('$destroy',function(){
+                    $timeout.cancel(stimer);
+            });
         }
     }
+}).directive('repeat', function($timeout) {
+    return {
+        restrict: 'AE',
+        replace: true,
+        link: function (scope, elem, attrs) {
+            
+            var speak = function (text, advance) {
+                scope.synthesis.text = text;
+                scope.synthesis.onend = function(event) { listen(); }
 
+                speechSynthesis.speak(scope.synthesis);
+                if(advance) {
+                    scope.synthesis.onend = function(){
+                        $timeout(function(){
+                            var scopeMain = angular.element($("#templateContent")).scope();
+                            scopeMain.$apply(function(){ scopeMain.advanceform();});
+                        }, 1500);
+                    };
+                }
+            }
+            
+            var listen = function() {
+                var text = '';
+                scope.recognizer.stop();
+                scope.recognizer.start();
+                scope.recognizer.onresult = function(event) {
+                    if (event.results.length > 0) {
+                        text = '';
+                        for(var i=0; i < event.results.length; i++) {
+                            text += event.results[i][0].transcript;
+                            if(i != event.results.length) {
+                                text += " ";
+                            }
+                        }
+                        
+                        //TODO: add in the interim text results if we can 
+                        var scopeMain = angular.element($("#templateContent")).scope();
+                        scopeMain.$apply(function(){ scopeMain.commandLine = text;});
+                        speak(text, true);
+                    }
+                }
+            }
+
+            speak(attrs.intro, false);
+
+        }
+    }
+}).directive('conversation', function($timeout){
+    return {
+        restrict: 'AE',
+        replace: true,
+        link: function (scope, elem, attrs) {
+            scope.endListener = false;
+            scope.conversation = JSON.parse(attrs.cmdrsp);
+        
+            var checkForCommand = function(text){
+                // important to know that this is inside of the recognition call back scope
+                var scopeMain = angular.element($("#templateContent")).scope();
+                var commandLowerCase = text.toLowerCase();
+                if(commandLowerCase.indexOf(attrs.advancecommand) != -1) {
+                    scope.endListener = true;
+                    scope.synthesis.onend = function(){};
+                    scopeMain.$apply(function(){scopeMain.recognizer.stop(); scopeMain.advanceform();});
+
+                    return;
+                }
+
+                for(var cmdRspIdx in scope.conversation){
+                    if(commandLowerCase.indexOf(scope.conversation[cmdRspIdx].command.toLowerCase()) != -1) {
+                        scopeMain.$apply(function(){scope.recognizer.stop();});
+                        converse(scope.conversation[cmdRspIdx].response);
+                        return;
+                    }
+
+                };
+
+            }
+
+            var converse = function (text) {
+                scope.synthesis.text = text;
+                scope.synthesis.onend = function(event) { scope.recognizer.abort(); scope.recognizer.start(); }
+                speechSynthesis.speak(scope.synthesis);
+
+                scope.recognizer.onresult = function(event) {
+                    if (event.results.length > 0) {
+                        text = '';
+                        for(var i=0; i < event.results.length; i++) {
+                            text += event.results[i][0].transcript;
+                            if(i != event.results.length) {
+                                text += " ";
+                            }
+                        }
+                        //TODO: add in the interim text results if we can 
+                        var scopeMain = angular.element($("#templateContent")).scope();
+                        scopeMain.$apply(function(){ scopeMain.commandLine = text;});
+
+                        checkForCommand(text);
+                    }
+                }
+            }
+
+            converse(attrs.intro);
+    
+        }
+    }
 });

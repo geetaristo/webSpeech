@@ -6,10 +6,12 @@ angular.module('myApp.controllers', ['myApp.templates']).
   controller('mainFormController', ['$scope','templateProvider', 
     function($scope,templateProvider) {
         $scope.synthesis = new SpeechSynthesisUtterance();
+        $scope.recognizer = new webkitSpeechRecognition();
+        
         $scope.startOpeningThemeOnIdx = 3;  // index of dialog item where the opening theme starts
         $scope.hal_silly;                   // variable for holding the hal silly audio
         $scope.openingTheme;                // variable for holding the opening theme audio
-        $scope.goodbyeHalOnIdx = 15;  // index of dialog item where the opening theme starts
+        $scope.goodbyeHalOnIdx = 22;  // index of dialog item where the opening theme starts
         
         $scope.hal_silly = document.createElement('audio');
         $scope.hal_silly.setAttribute('src', '../audio/silly_hal.wav');
@@ -39,24 +41,36 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/console3.html",
             "templates/draftdoc.html",
             "templates/finaldoc.html",
-            "templates/browsersupport.html",
+            "templates/browsersupport.html", // TODO:Needs to be enhanced
             "templates/speech-synth-overview.html",
             "templates/speech-synth-snip1.html",
             "templates/speech-synth-snip2.html",
             "templates/speech-synth-snip3.html",
-            "templates/speech-synth-snip4.html",
+            "templates/speech-synth-snip4.html",    // TODO: if we can do the VOICES... do that part here.
+                                                    // TODO: speechSynthesis is a little bit of a novelty..
+                                                    // accessibility... mobile
+                                                    // one advantage is it is dynamic... so the speech will
+                                                    // always match the content....
+                                                    // as opposed to pre-recorded audio that would need to
+                                                    // be re-recorded... 
+                                                    /// it can do things like read e-mail.
+            "templates/speech-recog-repeat.html",
+            "templates/speech-recog-conversation.html",
+                                                    // TODO: Form example
+                                                    // TODO: Nav example
+                                                    // TODO: This app's code overview.
             "templates/speech-rec-overview.html",
             "templates/speech-rec-snip1.html",
             "templates/speech-rec-snip2.html",
             "templates/speech-rec-snip3.html",
-            "templates/fin.html",
             "templates/blank.html",
+            "templates/fin.html",
             "templates/hal2.html",
             "templates/blank.html",
             "templates/credits.html"
         ];
        
-        $scope.templateIdx = 0; // Change this value to start on a new template
+        $scope.templateIdx = 14; // Change this value to start on a new template
         $scope.nextTemplate = function () {
             return $scope.templates[$scope.templateIdx++];
           }();
