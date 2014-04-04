@@ -1,16 +1,16 @@
 <div>
-	<div id="dialogContent">
+    <div id="dialogContent">
 	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
     </div>
-    <speaker text="You will need to give me permission before I can actually start listening.| This is required by the security and privacy portion of the API." 
+    <speaker text="You will need to give me permission before I can actually start listening.| This is required by the security and privacy portion of the API.|If your application is running on a non-secure server|This permission will be required each time that start() is called.|As you can imagine, that is not the best user experience.|However, if you run your application on a secure server|the user's permission is required only once.|I am currently being hosted on a local node server with a self signed certificate." 
         typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
     
-
-    <script type="text/javascript">
-    var recognition = new webkitSpeechRecognition();
-     recognition.start();
-   
-    </script>
+    <pre><code>
+        <script type="text/javascript">
+            var recognition = new webkitSpeechRecognition();
+            recognition.start();
+        </script>
+    </code></pre>
    
 
 </div>

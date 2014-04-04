@@ -70,7 +70,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/credits.html"
         ];
        
-        $scope.templateIdx = 14; // Change this value to start on a new template
+        $scope.templateIdx = 3; // Change this value to start on a new template
         $scope.nextTemplate = function () {
             return $scope.templates[$scope.templateIdx++];
           }();
@@ -101,8 +101,8 @@ angular.module('myApp.controllers', ['myApp.templates']).
                 {src: "/images/scifi/11-shortCircuit.jpg",  delay: 600},
                 {src: "/images/scifi/12-terminator.jpg",  delay: 1000},
                 {src: "/images/scifi/13-scotty.jpg",  delay: 4000},
-                {src: "/images/scifi/15-Rocky_4_robot.jpg",  delay: 350},
-                {src: "/images/scifi/17-OptimusPrime1.jpg",  delay: 800},
+                {src: "/images/scifi/15-Rocky_4_robot.jpg",  delay: 250},
+                {src: "/images/scifi/17-OptimusPrime1.jpg",  delay: 900},
                 {src: "/images/scifi/16-Data_intoxicated.jpg",  delay: 1950},
                 {src: "/images/scifi/18-HitchhikersGuideToTheGalaxy.jpg",  delay: 1000},
                 {src: "/images/scifi/19-iRobot.jpg",  delay: 1300},
