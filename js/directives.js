@@ -92,8 +92,8 @@ angular.module('myApp.directives', ['ngAnimate'])
                     })[0];
                     
                     }
-                    
-                    speechSynthesis.speak(scope.synthesis);
+                    if(attrs.speak == "true")
+                        speechSynthesis.speak(scope.synthesis);
                     
             }
 

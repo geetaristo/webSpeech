@@ -2,8 +2,8 @@
 	<div id="dialogContent">
 	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
     </div>
-    <speaker text="and treat SpeechSynthesis Utterance as a singleton.|Then you can set the text field to a new value|and reuse the object.|I can also change the way I sound by setting a new voice on my Utterance.|Be careful of race conditions because if you're timing is off, you may set the text value before it is done."
-        typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
+    <speaker text="and treat SpeechSynthesis Utterance as a singleton.|Then you can set the text field to a new value|and reuse the object.|I can also change the way I sound by setting a new voice on my Utterance.|Be careful of race conditions because if you're timing is off, you may set the text value before it is done|and end up repeating yourself.|and end up repeating yourself.|Just kidding|I did that on purpose.|Just for the record|I have no plans on going into comedy."
+        typeit="true" typespeed=20 pause=2000 speak="true" advance="true"/>
     <pre> <code>
         var msg  = new SpeechSynthesisUtterance();
           
