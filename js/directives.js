@@ -80,7 +80,21 @@ angular.module('myApp.directives', ['ngAnimate'])
             if(scope.synthesis){
                 scope.synthesis.text = scope.sentences[scope.sentenceIdx];
                 if(attrs.speak == "true")
+                    
+                if(attrs.voice){
+                    scope.synthesis.voice = speechSynthesis.getVoices().filter(function (voice) {
+                        return voice.name == attrs.voice;
+                    })[0];
+                        
+                    }else {
+                        scope.synthesis.voice = speechSynthesis.getVoices().filter(function (voice) {
+                        return voice.name == "native";
+                    })[0];
+                    
+                    }
+                    
                     speechSynthesis.speak(scope.synthesis);
+                    
             }
 
             if(attrs.typeit==="true"){
