@@ -6,12 +6,13 @@ angular.module('myApp.controllers', ['myApp.templates']).
   controller('mainFormController', ['$scope','templateProvider', 
     function($scope,templateProvider) {
         $scope.synthesis = new SpeechSynthesisUtterance();
+       
         $scope.recognizer = new webkitSpeechRecognition();
 
         $scope.startOpeningThemeOnIdx = 3;  // index of dialog item where the opening theme starts
         $scope.hal_silly;                   // variable for holding the hal silly audio
         $scope.openingTheme;                // variable for holding the opening theme audio
-        $scope.goodbyeHalOnIdx = 22;  // index of dialog item where the opening theme starts
+        $scope.goodbyeHalOnIdx = 22;        // index of dialog item where the opening theme starts
 
         $scope.hal_silly = document.createElement('audio');
         $scope.hal_silly.setAttribute('src', '../audio/silly_hal.wav');
@@ -32,6 +33,12 @@ angular.module('myApp.controllers', ['myApp.templates']).
         }
         
         var sayGoodByeHal = function(){$scope.hal_goodbye.play();}
+        
+        function loadVoices(){
+         $scope.voices = speechSynthesis.getVoices();
+        }
+        loadVoices();
+        speechSynthesis.onvoiceschanged = function(e) {loadVoices()};
 
         $scope.templates=  [
             "templates/welcome.html",
@@ -47,8 +54,10 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/speech-synth-snip1.html",
             "templates/speech-synth-snip2.html",
             "templates/speech-synth-snip3.html",
-            "templates/speech-synth-snip4.html",    // TODO: if we can do the VOICES... do that part here.
-            "templates/speech-synth-snip5.html",    // TODO: speechSynthesis is a little bit of a novelty..
+            "templates/speech-synth-snip4.html",  
+            "templates/speech-synth-snip5.html",
+            "templates/speech-synth-snip6.html",
+                                                    // TODO: speechSynthesis is a little bit of a novelty..
                                                     // accessibility... mobile
                                                     // one advantage is it is dynamic... so the speech will
                                                     // always match the content....
@@ -70,8 +79,8 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/blank.html",
             "templates/credits.html"
         ];
-       
-        $scope.templateIdx = 8; // Change this value to start on a new template
+
+        $scope.templateIdx = 13; // Change this value to start on a new template
         $scope.nextTemplate = function () {
             return $scope.templates[$scope.templateIdx++];
           }();
@@ -113,15 +122,5 @@ angular.module('myApp.controllers', ['myApp.templates']).
 
             ];
 
-    // try to change the voice.
-    //    $scope.voices = speechSynthesis.getVoices();
-    //    $scope.$watch('voices',function(){
-    //        $scope.voices.forEach(function(voice){
-    //            if(voice.name == 'Alex')
-    //                $scope.synthesis.voice = voice;
-    //        });
-    //
-    //    });
-    
   }])
   

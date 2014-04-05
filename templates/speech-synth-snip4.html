@@ -2,7 +2,7 @@
 	<div id="dialogContent">
 	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
     </div>
-    <speaker text="and treat SpeechSynthesis Utterance as a singleton.|Then you can set the text field to a new value|and reuse the object.|I am actually an Angular application|and my text comes from an Angular directive.|I won't bother to get into those details now|but we will take a closer look inside my code.|At the end of this presentation|and|I will give you a link to where I am stored on github"
+    <speaker text="and treat SpeechSynthesis Utterance as a singleton.|Then you can set the text field to a new value|and reuse the object.|I can also change the way I sound by setting a new voice on my Utterance.|Be careful of race conditions because if you're timing is off, you may set the text value before it is done."
         typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
     <pre> <code>
         var msg  = new SpeechSynthesisUtterance();
@@ -13,6 +13,12 @@
         
         msg.text = "Then set it to the next thing you want to say";
 
+        //I'm Bored and I want to sound British. ;-)
+        msg.voice = speechSynthesis.getVoices().filter(function (voice) {
+                        return voice.name == "Google UK English Female";
+                    })[0];
+        
+        
         speechSynthesis.speak(msg);
         
     </code> </pre>

@@ -1,4 +1,8 @@
 <div>
     <repeat intro="Let's try out the recognition feature of WebSpeech. Say something and I will repeat it." />
     <div id="textOut">/$ <span id="commandLine"></span>{{commandline}}<span class="blink">_</span></div>
+
+    <form ng-submit="advanceform()">
+        <button type="submit" >advance</button>
+    </form>
 </div>
