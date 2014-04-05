@@ -7,12 +7,12 @@ angular.module('myApp.controllers', ['myApp.templates']).
     function($scope,templateProvider) {
         $scope.synthesis = new SpeechSynthesisUtterance();
         $scope.recognizer = new webkitSpeechRecognition();
-        
+
         $scope.startOpeningThemeOnIdx = 3;  // index of dialog item where the opening theme starts
         $scope.hal_silly;                   // variable for holding the hal silly audio
         $scope.openingTheme;                // variable for holding the opening theme audio
         $scope.goodbyeHalOnIdx = 22;  // index of dialog item where the opening theme starts
-        
+
         $scope.hal_silly = document.createElement('audio');
         $scope.hal_silly.setAttribute('src', '../audio/silly_hal.wav');
         $scope.hal_silly.load();
@@ -30,6 +30,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
                 $scope.openingTheme.play();
             });
         }
+        
         var sayGoodByeHal = function(){$scope.hal_goodbye.play();}
 
         $scope.templates=  [
@@ -47,7 +48,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/speech-synth-snip2.html",
             "templates/speech-synth-snip3.html",
             "templates/speech-synth-snip4.html",    // TODO: if we can do the VOICES... do that part here.
-                                                    // TODO: speechSynthesis is a little bit of a novelty..
+            "templates/speech-synth-snip5.html",    // TODO: speechSynthesis is a little bit of a novelty..
                                                     // accessibility... mobile
                                                     // one advantage is it is dynamic... so the speech will
                                                     // always match the content....
@@ -70,7 +71,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/credits.html"
         ];
        
-        $scope.templateIdx = 3; // Change this value to start on a new template
+        $scope.templateIdx = 8; // Change this value to start on a new template
         $scope.nextTemplate = function () {
             return $scope.templates[$scope.templateIdx++];
           }();
@@ -102,8 +103,8 @@ angular.module('myApp.controllers', ['myApp.templates']).
                 {src: "/images/scifi/12-terminator.jpg",  delay: 1000},
                 {src: "/images/scifi/13-scotty.jpg",  delay: 4000},
                 {src: "/images/scifi/15-Rocky_4_robot.jpg",  delay: 250},
-                {src: "/images/scifi/17-OptimusPrime1.jpg",  delay: 900},
-                {src: "/images/scifi/16-Data_intoxicated.jpg",  delay: 1950},
+                {src: "/images/scifi/17-OptimusPrime1.jpg",  delay: 1000},
+                {src: "/images/scifi/16-Data_intoxicated.jpg",  delay: 2050},
                 {src: "/images/scifi/18-HitchhikersGuideToTheGalaxy.jpg",  delay: 1000},
                 {src: "/images/scifi/19-iRobot.jpg",  delay: 1300},
                 {src: "/images/scifi/20-Jarvis.IronManSuit.jpg",  delay: 1300},
