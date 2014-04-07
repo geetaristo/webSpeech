@@ -12,7 +12,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
         $scope.startOpeningThemeOnIdx = 3;  // index of dialog item where the opening theme starts
         $scope.hal_silly;                   // variable for holding the hal silly audio
         $scope.openingTheme;                // variable for holding the opening theme audio
-        $scope.goodbyeHalOnIdx = 27;        // index of dialog item where the opening theme starts
+        $scope.goodbyeHalOnIdx = 30;        // index of dialog item where the opening theme starts
 
         $scope.hal_silly = document.createElement('audio');
         $scope.hal_silly.setAttribute('src', '../audio/silly_hal.wav');
@@ -51,13 +51,13 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/finaldoc.html",
             "templates/browsersupport.html", // TODO:Needs to be enhanced
             "templates/speech-synth-overview.html",
-            "templates/speech-synth-snip1.html",
+            "templates/speech-synth-snip1.html", //10
             "templates/speech-synth-snip2.html",
             "templates/speech-synth-snip3.html",
-            "templates/speech-synth-snip4.html",  
+            "templates/speech-synth-snip4.html",
             "templates/speech-synth-snip5.html",
             "templates/speech-synth-snip6.html",
-            "templates/speech-synth-snip7.html",
+            "templates/speech-synth-snip7.html", //16
                                                     // TODO: speechSynthesis is a little bit of a novelty..
                                                     // accessibility... mobile
                                                     // one advantage is it is dynamic... so the speech will
@@ -76,6 +76,9 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/speech-rec-snip2.html",
             "templates/speech-rec-snip3.html",
             "templates/speech-rec-snip4.html",
+            "templates/speech-rec-snip5.html",
+            "templates/speech-rec-snip6.html",
+            "templates/speech-rec-snip7.html",
             "templates/summary.html",
             "templates/blank.html",
             "templates/fin.html",
@@ -84,7 +87,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/credits.html"
         ];
 
-        $scope.templateIdx = 0; // Change this value to start on a new template
+        $scope.templateIdx = 2; // Change this value to start on a new template
         $scope.nextTemplate = function () {
             return $scope.templates[$scope.templateIdx++];
           }();

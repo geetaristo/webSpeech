@@ -2,13 +2,16 @@
     <div id="dialogContent">
 	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
     </div>
-    <speaker text="For our first recognition example|We used a simple listen and on end we updated the command line with the text we heard.|The directive I used for it is called repeat." 
+    
+    <speaker text="For our first recognition example|We used a simple listen and on end we updated the command line with the text we heard.|The directive I used for it is called repeat.|We first call start()|then we set our event hander for when a result is received.|The transcript is then pieced together as a single sentence." 
         typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
     
+    <p>
+    &lt;repeat intro="Let's try out the recognition feature of WebSpeech. Say something and I will repeat it." /&gt;
+    </p>
     <pre><code>
-        <!---
-        <repeat intro="Let's try out the recognition feature of WebSpeech. Say something and I will repeat it." />
-        -->
+
+
         scope.recognizer.start();
         scope.recognizer.onresult = function(event) {
             if (event.results.length > 0) {
@@ -27,6 +30,6 @@
         }
 
     </code></pre>
-   
+
 
 </div>

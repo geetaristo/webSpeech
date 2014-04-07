@@ -1,0 +1,37 @@
+<div>
+	<div id="dialogContent">
+	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
+    </div>
+
+    <speaker text="Another option for you to consider is to receive interim results.|To determine if we are the receiving interim or the final transcript|we need to check the isFinal value of the results object."
+        typeit="true" typespeed=20 pause=2000 speak="true" advance="true"/>
+    <scrolldiv speed=13000 scrollwait=5200>
+    
+    <pre id="scrolly"><code>
+
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onresult = function (event) {
+        var interim_transcript = '';
+        if (typeof (event.results) == 'undefined') {
+            recognition.onend = null;
+            recognition.stop();
+            upgrade();
+            return;
+        }
+        for (var i in event.results) {
+            if (event.results[i].isFinal) {
+                final_transcript += event.results[i][0].transcript;
+            } else {
+                interim_transcript += event.results[i][0].transcript;
+            }
+        }
+        final_transcript = capitalize(final_transcript);
+        
+    };
+    
+    </code></pre>
+    </scrolldiv>
+
+</div>

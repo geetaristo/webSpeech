@@ -1,0 +1,18 @@
+<div>
+    <div id="dialogContent">
+	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
+    </div>
+    
+    <speaker text="In the second example|we created another directive.|This one is a little more complicated|but a lot more powerful.|This conversation directive allows for some intro text|And you can specify a keyword for a command|to go to the next page|in the command response attribute|We specify JSON for our conversation.|The commands are keywords that trigger a response|When a key word is identified|the appropriate response is given.|You can see the promise of this.|Very easily, we could code up some functionality to be triggered based off of those commands.|In our example|we just created a simple dialog|But our response is really only limited|by the functionality of JavaScript." 
+        typeit="true" typespeed=20 pause=1500 speak="true" advance="true"/>
+    
+    <p>
+        &lt;conversation intro='How about we try a two way conversation scenario? Say hello.'<br />
+                    commandresponse='[{"command":"hello","response":"Oh, hello. How are you doing today?"},<br />
+                    {"command":"fine","response":"Are you enjoying Desert Code Camp?"},<br />
+                    {"command":"love","response":"We both know I am incapable of feeling emotions."},<br />
+                    {"command":"next slide","response":"I think you mean: next slide, please?"}]' <br />
+                    advancecommand='please'/&gt;<br />
+    </p>   
+
+</div>

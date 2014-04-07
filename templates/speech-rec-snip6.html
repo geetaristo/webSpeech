@@ -1,0 +1,73 @@
+<div>
+	<div id="dialogContent">
+	    <div id="textOut">/$<span>{{commandline}}</span><span class="blink">_</span></div>
+    </div>
+
+    <speaker text="This is the implementation of the Angular directive.|You can see that we take in the command response attribute and parse it.|Without going through it line by line|the basic gist of it|is that the result from the recognizer is checked|to see if a command exists somewhere in the text value.|If one is found,|it speaks the corresponding response."
+        typeit="true" typespeed=20 pause=2000 speak="true" advance="true"/>
+    <scrolldiv speed=13000 scrollwait=5200>
+    <pre id="scrolly"><code>
+angular.module('myApp.directives', ['ngAnimate'])
+.directive('conversation', function($timeout){
+    return {
+        restrict: 'AE',
+        replace: true,
+        link: function (scope, elem, attrs) {
+            scope.endListener = false;
+            scope.conversation = JSON.parse(attrs.commandresponse);
+        
+            var checkForCommand = function(text){
+                // important to know that this is inside of the recognition call back scope
+                var scopeMain = angular.element($("#templateContent")).scope();
+                var commandLowerCase = text.toLowerCase();
+                if(commandLowerCase.indexOf(attrs.advancecommand) != -1) {
+                    scope.endListener = true;
+                    scope.synthesis.onend = function(){};
+                    scopeMain.$apply(function(){scopeMain.recognizer.stop(); scopeMain.advanceform();});
+
+                    return;
+                }
+
+                for(var cmdRspIdx in scope.conversation){
+                    if(commandLowerCase.indexOf(scope.conversation[cmdRspIdx].command.toLowerCase()) != -1) {
+                        scopeMain.$apply(function(){scope.recognizer.stop();});
+                        converse(scope.conversation[cmdRspIdx].response);
+                        return;
+                    }
+
+                };
+
+            }
+
+            var converse = function (text) {
+                scope.synthesis.text = text;
+                scope.synthesis.onend = function(event) { scope.recognizer.abort(); scope.recognizer.start(); }
+                speechSynthesis.speak(scope.synthesis);
+
+                scope.recognizer.onresult = function(event) {
+                    if (event.results.length > 0) {
+                        text = '';
+                        for(var i=0; i < event.results.length; i++) {
+                            text += event.results[i][0].transcript;
+                            if(i != event.results.length) {
+                                text += " ";
+                            }
+                        }
+                        //TODO: add in the interim text results if we can 
+                        var scopeMain = angular.element($("#templateContent")).scope();
+                        scopeMain.$apply(function(){ scopeMain.commandLine = text;});
+
+                        checkForCommand(text);
+                    }
+                }
+            }
+
+            converse(attrs.intro);
+    
+        }
+    }
+});
+    </code></pre>
+    </scrolldiv>
+
+</div>
