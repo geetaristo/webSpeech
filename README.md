@@ -1,6 +1,7 @@
-Making Your Pages Speak: Web Speech API
+#Making Your Pages Speak: Web Speech API
 
-A Practical implementation of the W3C Web Speech API https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
+####A Practical implementation of the W3C Web Speech API
+https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
 
 
 The Web Speech API is a Javacript Specification which enables the development of Web Pages with speech Recognition and Speech Synteshis capabilities.  This application is an Angular JS implementation of a self presenting presentation on the Speech API. This introduction will provide the information needed to get started speech enabling your own websites.
