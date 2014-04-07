@@ -65,12 +65,10 @@ angular.module('myApp.controllers', ['myApp.templates']).
                                                     // as opposed to pre-recorded audio that would need to
                                                     // be re-recorded... 
                                                     // it can do things like read e-mail.
-                                                    // slide for the really simple google webkit-speech-input
             "templates/speech-recog-repeat.html",
             "templates/speech-recog-conversation.html",
                                                     // TODO: Form example
                                                     // TODO: Nav example
-                                                    // TODO: This app's code overview.
             "templates/speech-rec-overview.html",
             "templates/speech-rec-snip1.html",
             "templates/speech-rec-snip2.html",
