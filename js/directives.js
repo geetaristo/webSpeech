@@ -116,7 +116,7 @@ angular.module('myApp.directives', ['ngAnimate'])
                         } else {
                             scope.sentenceIdx = 0;
                             if(attrs.advance=="true"){
-                                $timeout(scope.advanceform, 4500);
+                                $timeout(scope.advanceform, 4000);
                             }
                         }
                     }
