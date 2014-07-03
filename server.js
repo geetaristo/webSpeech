@@ -3,7 +3,7 @@ var fs = require('fs'),
     https = require('https'),
     express = require('express'),
     app = express(),
-    port = 8888;
+    port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname));
 app.use(express.directory(__dirname));
