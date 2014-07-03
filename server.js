@@ -13,7 +13,11 @@ var options = {
     cert: fs.readFileSync('node_modules/cert.pem'),
 };
 
-var server = https.createServer(options, app).listen(port, function(){
+//var server = https.createServer(options, app).listen(port, function(){
+//  console.log("Server listening on " + port);
+//});
+
+var server = http.createServer(app).listen(port, function(){
   console.log("Server listening on " + port);
 });
 
