@@ -85,7 +85,7 @@ angular.module('myApp.controllers', ['myApp.templates']).
             "templates/credits.html"
         ];
 
-        $scope.templateIdx = 2; // Change this value to start on a new template
+        $scope.templateIdx = 0; // Change this value to start on a new template
         $scope.nextTemplate = function () {
             return $scope.templates[$scope.templateIdx++];
           }();

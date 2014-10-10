@@ -2,7 +2,7 @@ function keyedUp(event){
     if(event.keyCode == 13){
         var command = $('#commandLine').html();
         $('#commandLine').html('');
-        if(command == 'START'){
+        if(command == 'BEGIN'){
             setTimeout(function(){
                 var scope = angular.element($("#templateContent")).scope();
                 scope.$apply(function(){scope.advanceform(); });

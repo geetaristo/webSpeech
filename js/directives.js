@@ -100,6 +100,7 @@ angular.module('myApp.directives', ['ngAnimate'])
             if(attrs.typeit==="true"){
                 scope.charpos = 0;
                 scope.commandline = ' ';
+                
                 scope.nextchar=function(){
                     scope.commandline += scope.synthesis.text[scope.charpos];
                     scope.charpos++;
@@ -116,7 +117,7 @@ angular.module('myApp.directives', ['ngAnimate'])
                         } else {
                             scope.sentenceIdx = 0;
                             if(attrs.advance=="true"){
-                                $timeout(scope.advanceform, 4000);
+                                $timeout(scope.advanceform, 3000);
                             }
                         }
                     }
