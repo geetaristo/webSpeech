@@ -1,0 +1,24 @@
+{
+  "name": "webSpeech",
+  "version": "0.0.0",
+  "description": "https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~3.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geetaristo/webSpeech.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geetaristo/webSpeech/issues"
+  },
+  "homepage": "https://github.com/geetaristo/webSpeech"
+}

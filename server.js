@@ -3,7 +3,7 @@ var fs = require('fs'),
     https = require('https'),
     express = require('express'),
     app = express(),
-    port = 8888;
+    port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname));
 app.use(express.directory(__dirname));
@@ -13,7 +13,11 @@ var options = {
     cert: fs.readFileSync('node_modules/cert.pem'),
 };
 
-var server = https.createServer(options, app).listen(port, function(){
+//var server = https.createServer(options, app).listen(port, function(){
+//  console.log("Server listening on " + port);
+//});
+
+var server = http.createServer(app).listen(port, function(){
   console.log("Server listening on " + port);
 });
 
