@@ -1,6 +1,6 @@
-#Making Your Pages Speak: Web Speech API
+# Making Your Pages Speak: Web Speech API
 
-####A Practical implementation of the W3C Web Speech API
+#### A Practical implementation of the W3C Web Speech API
 https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
 
 
